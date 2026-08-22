@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --background: #08090b;
+  --foreground: #f5f7f2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(77, 182, 255, 0.1), transparent 34rem),
+    #08090b;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  letter-spacing: 0;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease,
+    opacity 160ms ease, transform 160ms ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #d7ff45;
+  outline-offset: 2px;
+}
+
+::selection {
+  background: #d7ff45;
+  color: #08090b;
+}
+
+@layer components {
+  .glass-panel {
+    @apply border border-white/10 bg-white/[0.045] backdrop-blur-xl;
+  }
+
+  .eyebrow {
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45;
+  }
+
+  .metric-value {
+    @apply text-2xl font-semibold text-white md:text-3xl;
+  }
+
+  .field {
+    @apply w-full border border-white/10 bg-black/30 px-3 py-2.5 text-sm text-white outline-none placeholder:text-white/25 focus:border-acid/60;
+  }
+
+  .icon-button {
+    @apply inline-flex size-9 shrink-0 items-center justify-center border border-white/10 bg-white/[0.04] text-white/60 hover:border-white/20 hover:bg-white/[0.08] hover:text-white;
+  }
+}
+
+.thin-scrollbar {
+  scrollbar-color: #30343b transparent;
+  scrollbar-width: thin;
+}
+
+.grid-surface {
+  background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.wave-bar {
+  animation: pulse-wave 1.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes pulse-wave {
+  0%, 100% { transform: scaleY(0.35); opacity: 0.55; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
